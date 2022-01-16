@@ -1,9 +1,8 @@
 package com.first.group.comment.impl;
 
-
-import com.first.group.comment.pojo.CommentDto;
-import com.first.group.comment.pojo.APFittingsComment;
-import com.first.group.comment.pojo.ApComment;
+import com.first.group.comment.dtos.CommentDto;
+import com.first.group.comment.pojos.APFittingsComment;
+import com.first.group.comment.pojos.ApComment;
 import com.first.group.dtos.ManagerCodeEnum;
 import com.first.group.dtos.ResponseResult;
 import com.first.group.comment.service.ApCommentFittingsService;

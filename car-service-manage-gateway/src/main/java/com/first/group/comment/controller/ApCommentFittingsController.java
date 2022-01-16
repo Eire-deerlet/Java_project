@@ -1,10 +1,9 @@
 package com.first.group.comment.controller;
 
 
-import com.first.group.comment.pojo.CommentDto;
-import com.first.group.comment.pojo.APFittingsComment;
+import com.first.group.comment.dtos.CommentDto;
+import com.first.group.comment.pojos.APFittingsComment;
 import com.first.group.dtos.ResponseResult;
-
 import com.first.group.comment.service.ApCommentFittingsService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;

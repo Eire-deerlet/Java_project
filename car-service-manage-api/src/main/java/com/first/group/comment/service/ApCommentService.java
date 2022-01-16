@@ -1,7 +1,8 @@
 package com.first.group.comment.service;
 
-import com.first.group.comment.pojo.CommentDto;
-import com.first.group.comment.pojo.ApComment;
+
+import com.first.group.comment.dtos.CommentDto;
+import com.first.group.comment.pojos.ApComment;
 import com.first.group.dtos.ResponseResult;
 
 import java.util.List;

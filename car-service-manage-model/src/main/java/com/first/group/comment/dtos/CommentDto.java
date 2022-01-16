@@ -1,4 +1,4 @@
-package com.first.group.comment.pojo;
+package com.first.group.comment.dtos;
 
 import lombok.Data;
 

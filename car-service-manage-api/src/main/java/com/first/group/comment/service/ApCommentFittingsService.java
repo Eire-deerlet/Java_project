@@ -1,7 +1,7 @@
 package com.first.group.comment.service;
 
-import com.first.group.comment.pojo.CommentDto;
-import com.first.group.comment.pojo.APFittingsComment;
+import com.first.group.comment.dtos.CommentDto;
+import com.first.group.comment.pojos.APFittingsComment;
 import com.first.group.dtos.ResponseResult;
 
 public interface ApCommentFittingsService {
