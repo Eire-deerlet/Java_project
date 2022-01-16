@@ -1,0 +1,17 @@
+server:
+  port: 9002
+
+spring:
+  data:
+    mongodb:
+      host: 192.168.66.129
+      port: 27017
+      database: car-comment
+
+dubbo:
+  # 项目名称，用于计算服务的依赖关系。（区分不同项目的服务）
+  application:
+    name: order-web-comment
+  # 注册中心地址
+  registry:
+    address: zookeeper://192.168.66.129:2181
