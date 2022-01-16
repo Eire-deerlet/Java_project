@@ -1,6 +1,9 @@
 package com.first.group.dtos;
 
-public enum AppHttpCodeEnum {
+import lombok.Getter;
+
+@Getter
+public enum ManagerCodeEnum {
 
     // 成功段0
     SUCCESS(200,"操作成功"),
@@ -25,12 +28,24 @@ public enum AppHttpCodeEnum {
     DATA_NOT_EXIST(1002,"数据不存在"),
     // 数据错误 3000~3500
     NO_OPERATOR_AUTH(3000,"无权限操作"),
-    NEED_ADMIND(3001,"需要管理员权限");
+    NEED_ADMIND(3001,"需要管理员权限"),
+
+    DATA_TRANSFER_ERROR(500, "数据转换异常！"),
+    INSERT_OPERATION_FAIL(500, "新增操作失败！"),
+    UPDATE_OPERATION_FAIL(500, "更新操作失败！"),
+    DELETE_OPERATION_FAIL(500, "删除操作失败！"),
+    COMPANY_ADMIN_NOT_EXISTS(500, "没有找到对应企业管理员！"),
+    COMPANY_NOT_FOUND(500, "企业不存在！"),
+    ROLE_NOT_FOUND(403, "角色列表不存在！"),
+
+    FILE_UPLOAD_ERROR(500, "文件上传失败！"),
+    FILE_WRITER_ERROR(500, "文件写入失败！"),
+    FILE_SIZE_EXCEED_MAX_LIMIT(500, "上传文件大小超出限制！");
 
     int code;
     String errorMessage;
 
-    AppHttpCodeEnum(int code, String errorMessage){
+    ManagerCodeEnum(int code, String errorMessage){
         this.code = code;
         this.errorMessage = errorMessage;
     }

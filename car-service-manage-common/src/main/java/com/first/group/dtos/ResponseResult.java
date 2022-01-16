@@ -52,26 +52,26 @@ public class ResponseResult<T> implements Serializable {
     }
 
     public static ResponseResult okResult(Object data) {
-        ResponseResult result = setAppHttpCodeEnum(AppHttpCodeEnum.SUCCESS, AppHttpCodeEnum.SUCCESS.getErrorMessage());
+        ResponseResult result = setAppHttpCodeEnum(ManagerCodeEnum.SUCCESS, ManagerCodeEnum.SUCCESS.getErrorMessage());
         if(data!=null) {
             result.setData(data);
         }
         return result;
     }
 
-    public static ResponseResult errorResult(AppHttpCodeEnum enums){
+    public static ResponseResult errorResult(ManagerCodeEnum enums){
         return setAppHttpCodeEnum(enums,enums.getErrorMessage());
     }
 
-    public static ResponseResult errorResult(AppHttpCodeEnum enums, String errorMessage){
+    public static ResponseResult errorResult(ManagerCodeEnum enums, String errorMessage){
         return setAppHttpCodeEnum(enums,errorMessage);
     }
 
-    public static ResponseResult setAppHttpCodeEnum(AppHttpCodeEnum enums){
+    public static ResponseResult setAppHttpCodeEnum(ManagerCodeEnum enums){
         return okResult(enums.getCode(),enums.getErrorMessage());
     }
 
-    private static ResponseResult setAppHttpCodeEnum(AppHttpCodeEnum enums, String errorMessage){
+    private static ResponseResult setAppHttpCodeEnum(ManagerCodeEnum enums, String errorMessage){
         return okResult(enums.getCode(),errorMessage);
     }
 

@@ -3,7 +3,7 @@ package com.first.group.comment.impl;
 
 import com.first.group.comment.pojo.CommentDto;
 import com.first.group.comment.pojo.ApComment;
-import com.first.group.dtos.AppHttpCodeEnum;
+import com.first.group.dtos.ManagerCodeEnum;
 import com.first.group.dtos.ResponseResult;
 import com.first.group.comment.service.ApCommentService;
 import org.apache.dubbo.config.annotation.Service;
@@ -53,13 +53,13 @@ public class ApCommentServiceImpl implements ApCommentService {
     public ResponseResult delete(CommentDto commentDto) {
 
         if (commentDto.getId() == null) {
-            return ResponseResult.errorResult(AppHttpCodeEnum.PARAM_INVALID);
+            return ResponseResult.errorResult(ManagerCodeEnum.PARAM_INVALID);
         }
 
         mongoTemplate.remove(Query.query(Criteria.where("Id").is(commentDto.getId())), ApComment.class);
 
 
-        return ResponseResult.okResult(AppHttpCodeEnum.SUCCESS);
+        return ResponseResult.okResult(ManagerCodeEnum.SUCCESS);
     }
 
     @Override
