@@ -8,6 +8,12 @@ spring:
       port: 27017
       database: car-comment
 
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.66.129:3306/settlement?characterEncoding=utf8&useUnicode=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+
 dubbo:
   # 项目名称，用于计算服务的依赖关系。（区分不同项目的服务）
   application:

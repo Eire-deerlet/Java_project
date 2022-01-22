@@ -11,8 +11,6 @@
         <module>car-service-manage-gateway</module>
         <module>car-service-manage-common</module>
         <module>car-service-manage-api</module>
-        <module>car-service-manage-model</module>
-        <module>car-service-manage-mainbody</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
