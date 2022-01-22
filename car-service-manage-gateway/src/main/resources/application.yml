@@ -2,6 +2,12 @@ server:
   port: 9002
 
 spring:
+  #数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.66.129:3306/car_service_manage?characterEncoding=utf8&useUnicode=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: root
   data:
     mongodb:
       host: 192.168.66.129
@@ -15,3 +21,11 @@ dubbo:
   # 注册中心地址
   registry:
     address: zookeeper://192.168.66.129:2181
+
+
+minio:
+  accessKey: minio
+  secretKey: minio123
+  bucket: mainbody
+  endpoint: http://192.168.66.129:9000
+  readPath: http://192.168.66.129:9000
