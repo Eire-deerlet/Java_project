@@ -16,11 +16,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-    <!--  mongo-->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-mongodb</artifactId>
-    </dependency>
 
     <!--dubbo的起步依赖-->
     <dependency>
@@ -62,10 +57,11 @@
     </dependency>
 
     <dependency>
-        <groupId>com.caucho</groupId>
-        <artifactId>hessian</artifactId>
-        <version>4.0.7</version>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.18</version>
     </dependency>
+
 </dependencies>
 
 
