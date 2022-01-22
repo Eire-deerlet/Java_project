@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>car-service-manage-comment</module>
-        <module>car-service-manage-settlement</module>
+        <module>car-service-manage-service-mainbody</module>
     </modules>
 
     <dependencies>
