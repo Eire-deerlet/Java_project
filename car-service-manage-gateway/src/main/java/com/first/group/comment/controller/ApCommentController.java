@@ -24,12 +24,12 @@ public class ApCommentController {
      * @return
      */
     @GetMapping("/list")
-    public ResponseResult<List<ApComment>> list(CommentDto commentDto) {
+    public ResponseResult<List<ApComment>> list( CommentDto commentDto) {
         return apCommentService.list(commentDto);
     }
 
     @GetMapping("/delete")
-    public ResponseResult delete(CommentDto commentDto) {
+    public ResponseResult delete(@RequestBody CommentDto commentDto) {
         return apCommentService.delete(commentDto);
     }
 
@@ -39,5 +39,8 @@ public class ApCommentController {
         apCommentService.insert(apComment);
     }
 
-
+    @GetMapping("looklist")
+    public ResponseResult<ApComment> lookList(String id){
+        return apCommentService.lookList(id);
+    };
 }

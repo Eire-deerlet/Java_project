@@ -1,27 +1,29 @@
 package com.first.group.comment.impl;
 
+
+
+
+import com.first.group.comment.dtos.AppHttpCodeEnum;
 import com.first.group.comment.dtos.CommentDto;
 import com.first.group.comment.pojos.APFittingsComment;
-import com.first.group.comment.pojos.ApComment;
+import com.first.group.comment.service.ApCommentFittingsService;
 import com.first.group.dtos.ManagerCodeEnum;
 import com.first.group.dtos.ResponseResult;
-import com.first.group.comment.service.ApCommentFittingsService;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-
 import java.util.List;
 
 
 @Service
-
-public class ApCommentFittingsImpl  implements ApCommentFittingsService {
+public class ApCommentFittingsImpl implements ApCommentFittingsService {
 
     @Autowired
     private MongoTemplate mongoTemplate;
+
 
     @Override
     public ResponseResult<APFittingsComment> list(CommentDto commentDto) {
@@ -58,19 +60,26 @@ public class ApCommentFittingsImpl  implements ApCommentFittingsService {
             return ResponseResult.errorResult(ManagerCodeEnum.PARAM_INVALID);
         }
 
-        mongoTemplate.remove(Query.query(Criteria.where("Id").is(commentDto.getId())), ApComment.class);
 
 
-        return ResponseResult.okResult(ManagerCodeEnum.SUCCESS);
+
+            mongoTemplate.remove(Query.query(Criteria.where("Id").is(commentDto.getId())), APFittingsComment.class);
+
+
+        return ResponseResult.okResult(AppHttpCodeEnum.SUCCESS);
     }
 
     @Override
     public void insert(APFittingsComment apFittingsComment) {
-        mongoTemplate.save(apFittingsComment);
-    }
+
+        mongoTemplate.save(apFittingsComment);    }
+
+
 
     @Override
-    public ResponseResult lookList(Integer id) {
-        return null;
+    public ResponseResult<APFittingsComment> lookList(String id) {
+
+
+        return ResponseResult.okResult( mongoTemplate.findById(id, APFittingsComment.class));
     }
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.first.group.mapper.OrderServiceMapper">
+
+	<select id="getOrderService" resultType="OrderService">
+		select * from order_service
+		<where>
+			<if test="dto.status==0">
+				status in (2,3,4,5,6,7,8)
+			</if>
+			<if test="dto.status==1">
+				status =#{dto.status}
+			</if>
+			<if test="dto.status==2">
+				status in (2,3)
+			</if>
+			<if test="dto.status==6">
+				status in (4,5,6,8)
+			</if>
+			<if test="dto.status==7">
+				status =#{dto.status}
+			</if>
+			<if test="dto.id!=null">
+				id =#{dto.id}
+			</if>
+			<if test="dto.store!=null and dto.store!=''">
+				store like '$%{dto.store}%'
+			</if>
+			<if test="dto.beforeTime!=null and dto.afterTime!=null">
+				create_time between dto.beforeTime and dto.afterTime
+			</if>
+			<if test="dto.client!=null and dto.client!=''">
+				client =#{dto.client}
+			</if>
+			<if test="dto.payStatus!=null">
+				pay_status =#{dto.payStatus}
+			</if>
+		</where>
+		ORDER BY create_time DESC
+		LIMIT #{dto.pageNum},#{dto.pageSize};
+	</select>
+</mapper>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.first.group.parts.mapper.PcBrandMapper">
+	<select id="findlist" resultType="com.first.group.parts.pojos.PcBrand">
+		select * from pc_brand
+	</select>
+
+
+
+
+	<select id="findbyid" resultType="com.first.group.parts.pojos.PcBrand">
+		 SELECT * FROM `pc_brand`  WHERE  id =#{id}
+	</select>
+
+
+
+	<insert id="add">
+	INSERT INTO pc_brand  (coding,`name`,logo,create_time,update_time,sort) VALUES (#{coding},#{name},#{logo},#{createTime},#{updateTime},#{sort});
+	</insert>
+
+
+
+
+	<update id="update">
+		UPDATE pc_brand
+		<set>
+
+			<if test="coding!=null">
+				coding =#{coding},
+			</if>
+			<if test="name!=null and name!=''">
+				name =#{name},
+			</if>
+			<if test="logo!=null and logo!=''">
+				logo =#{logo},
+			</if>
+			<if test="updateTime!=null">
+				update_time =#{updateTime},
+			</if>
+			<if test="sort!=null">
+				sort =#{sort},
+			</if>
+		</set>
+		where  id =#{id}
+	</update>
+
+
+	<delete id="delete">
+  	delete from `pc_brand`  WHERE  id =#{id}
+	</delete>
+
+
+	<select id="search" resultType="com.first.group.parts.pojos.PcBrand">
+		select * from pc_brand
+		<where>
+			<if test="name!=null and name !=''">
+				name like "%"#{name}"%"
+			</if>
+			<if test="coding!=null and coding !=''">
+				and coding = #{coding}
+			</if>
+		</where>
+
+	</select>
+
+
+
+
+
+
+
+</mapper>

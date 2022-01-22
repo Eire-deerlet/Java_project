@@ -14,6 +14,9 @@
     <modules>
         <module>car-service-manage-comment</module>
         <module>car-service-manage-service-mainbody</module>
+        <module>car-service-manager-parts</module>
+        <module>car-service-manage-order</module>
+        <module>car-service-manage-settlement</module>
     </modules>
 
     <dependencies>

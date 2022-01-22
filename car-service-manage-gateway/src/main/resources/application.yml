@@ -10,7 +10,7 @@ spring:
     password: root
   data:
     mongodb:
-      host: 192.168.66.129
+      host: 192.168.66.128
       port: 27017
       database: car-comment
 
@@ -20,7 +20,7 @@ dubbo:
     name: order-web-comment
   # 注册中心地址
   registry:
-    address: zookeeper://192.168.66.129:2181
+    address: zookeeper://192.168.66.128:2181
 
 
 minio:

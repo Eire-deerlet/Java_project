@@ -24,7 +24,7 @@ public class ApCommentFittingsController {
      * @return
      */
     @GetMapping("/list")
-    public ResponseResult<APFittingsComment> list(@RequestBody CommentDto commentDto) {
+    public ResponseResult<APFittingsComment> list(  CommentDto commentDto) {
         return commentFittingsService.list(commentDto);
     }
 
@@ -35,7 +35,7 @@ public class ApCommentFittingsController {
      * @return
      */
     @GetMapping("/delete")
-    public ResponseResult delete(@RequestBody CommentDto commentDto) {
+    public ResponseResult delete(CommentDto commentDto) {
         return commentFittingsService.delete(commentDto);
     }
 
@@ -45,7 +45,8 @@ public class ApCommentFittingsController {
      * @param id
      * @return
      */
-    public ResponseResult lookList(@RequestParam  Integer id) {
+    @GetMapping("lookList")
+    public ResponseResult lookList(@RequestParam  String id) {
 
       return commentFittingsService.lookList(id);
     }

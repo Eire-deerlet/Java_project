@@ -11,7 +11,7 @@ spring:
     password: root
   data:
     mongodb:
-      host: 192.168.66.129
+      host: 192.168.66.128
       port: 27017
       database: car-comment
 
@@ -21,7 +21,7 @@ dubbo:
       name: dubbo-service-comment
     # 指定zk注册中心地址
     registry:
-      address: zookeeper://192.168.66.129:2181
+      address: zookeeper://192.168.66.128:2181
     protocol:
       # 对外暴漏的服务使用的协议：dubbo协议, 官网推荐
       name: dubbo

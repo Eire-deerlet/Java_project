@@ -11,5 +11,7 @@ public interface ApCommentFittingsService {
 
     void insert(APFittingsComment apFittingsComment);
 
-    ResponseResult lookList(Integer id);
+    ResponseResult lookList(String id);
+
+
 }

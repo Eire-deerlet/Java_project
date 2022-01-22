@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.first.group.parts.mapper.PcPartsMapper">
+	<select id="findlist" resultType="com.first.group.parts.pojos.PcParts">
+		select * from pc_parts where pc_parts.state=1
+	</select>
+	<select id="findlistend" resultType="com.first.group.parts.pojos.PcParts">
+		select * from pc_parts where pc_parts.state=0
+	</select>
+
+
+
+	<select id="findbyid" resultType="com.first.group.parts.pojos.PcParts">
+		SELECT * FROM `pc_parts` p_p WHERE  p_p.coding =#{id}
+	</select>
+
+
+
+	<insert id="add">
+
+	INSERT INTO pc_Parts_one  VALUES (#{coding},#{name},#{type},#{state},#{sort},#{updateTime},#{createTime});
+	</insert>
+
+	<update id="update">
+		UPDATE pc_parts SET pc_parts.state=0 WHERE pc_parts.id=#{id};
+	</update>
+
+	<update id="putaway">
+		UPDATE pc_parts SET pc_parts.state=1 WHERE pc_parts.id=#{id};
+	</update>
+
+	<select id="search" resultType="com.first.group.parts.pojos.PcParts">
+		select * from pc_parts
+		<where>
+			<if test="accessories!=null and accessories !=''">
+				and accessories = #{accessories}
+			</if>
+			<if test="coding!=null and coding !=''">
+				and coding = #{coding}
+			</if>
+			<if test="name!=null and name !=''">
+				and name = #{name}
+			</if>
+			<if test="model!=null and model !=''">
+				and model = #{model}
+			</if>
+
+			<if test="marque!=null and marque !=''">
+				and marque = #{marque}
+			</if>
+			<if test="partsName!=null and partsName !=''">
+				and parts_name = #{partsName}
+			</if>
+		</where>
+
+	</select>
+
+
+
+	<delete id="delete">
+  	delete from `pc_Parts_one` p_one WHERE  p_one.coding =#{id}
+	</delete>
+
+</mapper>

@@ -13,4 +13,7 @@ public interface ApCommentService {
     ResponseResult delete(CommentDto commentDto) ;
 
     void insert(ApComment apComment);
+
+    ResponseResult<ApComment> lookList(String id);
+
 }

@@ -1,0 +1,50 @@
+# springboot项目对外暴漏的端口（web项目就是访问端口）
+server:
+  port: 9010
+
+spring:
+  #数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.66.128:3306/car_service_manage?characterEncoding=utf8&useUnicode=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+
+  data:
+    mongodb:
+      host: 192.168.66.128
+      port: 27017
+      database: car-mainbody
+
+  #mybatis的扫描的xml
+mybatis:
+  mapper-locations: classpath:com.first.group.mainbody.mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+dubbo:
+  application:
+    # 项目名称，用于计算服务的依赖关系。（区分不同项目的服务）
+    name: dubbo-service-mainbody
+  # 指定zk注册中心地址
+  registry:
+    address: zookeeper://192.168.66.128:2181
+  protocol:
+    # 对外暴漏的服务使用的协议：dubbo协议, 官网推荐
+    name: dubbo
+    # 对外暴漏服务的端口
+    port: 20883
+  # dubbo包扫描，会扫描dubbo提供的@Service注解
+  scan:
+    base-packages: com.first.group.mainbody
+
+minio:
+  accessKey: minio
+  secretKey: minio123
+  bucket: mainbody
+  endpoint: http://192.168.66.128:9000
+  readPath: http://192.168.66.128:9000
+
+#日志显示SQL
+logging.level:
+  com.first.group: debug

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.first.group.parts.mapper.PcPartsTwoMapper">
+	<select id="findlist" resultMap="findlistmap" resultType="com.first.group.parts.pojos.PcPartsTwo">
+		select * from pc_Parts_two
+	</select>
+
+	<resultMap id="findlistmap" type="com.first.group.parts.pojos.PcPartsTwo">
+		<id property="coding" column="coding"/>
+		<result column="update_time" property="updateTime"></result>
+		<result column="create_time" property="createTime"></result>
+		<result column="parts_one_condig" property="partsOneCondig"></result>
+
+	</resultMap>
+
+
+	<insert id="add">
+
+	INSERT INTO pc_Parts_two  VALUES (#{coding},#{name},#{image},#{partsOneCondig},#{updateTime},#{createTime},#{sort});
+	</insert>
+
+
+
+	<select id="findbyid" resultType="com.first.group.parts.pojos.PcPartsTwo">
+		SELECT * FROM `pc_Parts_two` p_two WHERE  p_two.coding =#{id}
+	</select>
+
+
+
+	<update id="update">
+		UPDATE pc_Parts_two
+		<set>
+			<if test="name!=null and name!=''">
+				name =#{name},
+			</if>
+			<if test="image!=null and image!=''">
+				image =#{image},
+			</if>
+			<if test="updateTime!=null">
+				update_time =#{updateTime},
+			</if>
+			<if test="sort!=null">
+				sort =#{sort},
+			</if>
+		</set>
+		where  coding =#{coding}
+	</update>
+
+
+	<delete id="delete">
+  	delete from `pc_Parts_two` p_two WHERE  p_two.coding =#{id}
+	</delete>
+</mapper>

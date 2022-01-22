@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.first.group.mapper.OrderAccessoriesMapper">
+
+	<select id="findList" resultType="OrderAccessories" parameterType="com.first.group.order.dtos.OrderAccessoriesDto">
+		select * from order_accessories
+			<where>
+				<if test="dto.id!=null">
+					 id =#{dto.id}
+				</if>
+				<if test="dto.client!=null and dto.client!=''">
+					client =#{dto.client}
+				</if>
+				<if test="dto.status!=null and dto.status!='all'">
+					status =#{dto.status}
+				</if>
+				<if test="dto.beforeTime!=null and dto.afterTime!=null">
+					create_time BETWEEN #{dto.beforeTime} AND #{dto.afterTime}
+				</if>
+				<if test="dto.store!=null and dto.store!=''">
+					store like '%${dto.store}%'
+				</if>
+			</where>
+			ORDER BY create_time DESC
+			LIMIT #{dto.pageNum},#{dto.pageSize};
+	</select>
+</mapper>
