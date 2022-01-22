@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.first.group.parts.mapper.PcPartsOneMapper">
+	<select id="findlist" resultMap="findlistmap" resultType="com.first.group.parts.pojos.PcPartsOne">
+		select * from pc_Parts_one
+	</select>
+
+	<resultMap id="findlistmap" type="com.first.group.parts.pojos.PcPartsOne">
+		<id property="coding" column="coding"/>
+		<result column="update_time" property="updateTime"></result>
+		<result column="create_time" property="createTime"></result>
+
+	</resultMap>
+
+
+	<select id="findbyid" resultMap="findbyidmap" resultType="com.first.group.parts.pojos.PcPartsOne">
+		SELECT * FROM `pc_Parts_one` p_one WHERE  p_one.coding =#{id}
+	</select>
+
+	<resultMap id="findbyidmap" type="com.first.group.parts.pojos.PcPartsOne">
+		<id property="coding" column="coding"/>
+		<result column="update_time" property="updateTime"></result>
+		<result column="create_time" property="createTime"></result>
+
+	</resultMap>
+
+	<insert id="add">
+
+	INSERT INTO pc_Parts_one  VALUES (#{coding},#{name},#{type},#{state},#{sort},#{updateTime},#{createTime});
+	</insert>
+
+	<update id="update">
+		UPDATE pc_Parts_one
+		<set>
+			<if test="name!=null and name!=''">
+				name =#{name},
+			</if>
+			<if test="type!=null and type!=''">
+				type =#{type},
+			</if>
+			<if test="state!=null">
+				state =#{state},
+			</if>
+
+			<if test="sort!=null">
+				sort =#{sort},
+			</if>
+			<if test="updateTime!=null">
+				update_time =#{updateTime},
+			</if>
+		</set>
+		where  coding =#{coding}
+	</update>
+
+	<select id="search" resultMap="timeMaP" resultType="com.first.group.parts.pojos.PcPartsOne">
+		select * from pc_Parts_one
+		<where>
+			<if test="name!=null and name !=''">
+				name like "%"#{name}"%"
+			</if>
+			<if test="coding!=null and coding !=''">
+				and coding = #{coding}
+			</if>
+		</where>
+
+	</select>
+	<resultMap id="timeMaP" type="com.first.group.parts.pojos.PcPartsOne">
+		<id property="coding" column="coding"/>
+		<result column="update_time" property="updateTime"></result>
+		<result column="create_time" property="createTime"></result>
+	</resultMap>
+
+
+	<delete id="delete">
+  	delete from `pc_Parts_one` p_one WHERE  p_one.coding =#{id}
+	</delete>
+
+</mapper>
